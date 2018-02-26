@@ -384,7 +384,8 @@ export default function dropdownMultiselectController(
 		if (event.keyCode === 13 || event.keyCode === 32) { // enter
 			event.preventDefault();
 			if (sourceScope.option) {
-				$scope.setSelectedItem(sourceScope.option, false, true);
+                const dontRemove = settings && settings.selectionLimit && settings.selectionLimit === 1;
+				$scope.setSelectedItem(sourceScope.option, dontRemove, true);
 			} else if (event.target.id === 'deselectAll') {
 				$scope.deselectAll();
 			} else if (event.target.id === 'selectAll') {
